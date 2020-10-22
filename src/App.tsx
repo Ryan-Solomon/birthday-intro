@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
+import List from './List';
+import data from './Data';
+import Data from './types/types';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const [people, setPeople] = React.useState<Data[] | null>(data);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <section className='container'>
+        <h3>Birthdays Today</h3>
+        {data !== null && <List data={people} />}
+
+        <button onClick={() => setPeople(null)}>Clear All</button>
+      </section>
+    </main>
   );
-}
+};
 
 export default App;
